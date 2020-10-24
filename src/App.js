@@ -116,7 +116,7 @@ const App = ({
         </div>
         <Button data-cy="login-submit" type="submit">Login</Button>
       </Form>
-      username: qwer, password: qwer
+      <div>(please use username: qwer and password: qwer)</div>
     </div>
   );
   /* eslint-enable react/jsx-props-no-spreading */
