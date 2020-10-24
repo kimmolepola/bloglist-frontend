@@ -107,15 +107,16 @@ const App = ({
       <Notification />
       <Form onSubmit={handleLogin}>
         <div>
-            username
+          username
           <input data-cy="login-username" {...username} />
         </div>
         <div>
-            password
+          password
           <input data-cy="login-password" {...password} />
         </div>
         <Button data-cy="login-submit" type="submit">Login</Button>
       </Form>
+      username: qwer, password: qwer
     </div>
   );
   /* eslint-enable react/jsx-props-no-spreading */
