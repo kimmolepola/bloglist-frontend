@@ -1,6 +1,6 @@
 # Bloglist app - frontend
 
-Technologies: JavaScript, React, React router, Redux <br />
+Technologies: React, React router, Redux <br />
 Frontend on Azure: https://kimmolepola-bloglist-frontend.azurewebsites.net/ <br />
 Backend on Azure: https://kimmolepola-bloglist-backend.azurewebsites.net/api/blogs <br />
 Frontend on Heroku: https://kimmolepola-bloglist-frontend.herokuapp.com/ <br />
