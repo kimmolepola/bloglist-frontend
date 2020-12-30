@@ -24,7 +24,6 @@ import { initializeComments } from './reducers/commentsReducer';
 const App = ({
   blogs, user, notif, setUsr, initBlogs, initUsers, initComments,
 }) => {
-
   const { reset: usernamereset, ...username } = useField('text', 'Username');
   const { reset: passwordreset, ...password } = useField('password', 'Password');
 
@@ -67,13 +66,13 @@ const App = ({
   const Blogs = () => (
     <Table striped celled>
       <Table.Body>
-        {blogs.sort((a, b) => b.likes - a.likes).map((blog) => (
+        {Object.values(blogs).length !== 0 ? blogs.sort((a, b) => b.likes - a.likes).map((blog) => (
           <Table.Row key={blog.id}>
             <Table.Cell>
               <Link to={`/blogs/${blog.id}`}>{blog.title} {blog.author}</Link>
             </Table.Cell>
           </Table.Row>
-        ))}
+        )) : <Table.Row><Table.Cell>loading...</Table.Cell></Table.Row>}
       </Table.Body>
     </Table>
   );
