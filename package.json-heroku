@@ -23,7 +23,9 @@
     "semantic-ui-react": "^0.88.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "heroku-prebuild": "npm install -g serve",
+    "start": "serve -s build",
+    "devstart": "react-scripts start",
     "watch": "nodemon index.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
