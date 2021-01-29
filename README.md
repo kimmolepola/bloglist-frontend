@@ -1,6 +1,7 @@
 # Bloglist
 
 Technologies: React, React router, Redux, MongoDB <br />
+(Using free tier cloud services, please wait for service to wake up, refresh page if necessary) <br />
 Frontend on AWS: https://prod.d1ql0ha8xrz5ca.amplifyapp.com <br />
 Frontend on Azure: https://kimmolepola-bloglist-frontend.azurewebsites.net <br />
 Frontend on Heroku: https://kimmolepola-bloglist-frontend.herokuapp.com <br />
