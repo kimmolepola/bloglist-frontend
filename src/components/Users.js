@@ -12,7 +12,7 @@ const OneUser = ({ user }) => (
     <Segment textAlign="left">
       <b>Added blogs</b>
       <List bulleted>
-        {user.blogs.map((x) => (<List.Item key={x.id}>{x.title}</List.Item>))}
+        {user.blogs.map((x) => (<List.Item key={x.id}><Link to={`/blogs/${x.id}`}>{x.title}</Link></List.Item>))}
       </List>
     </Segment>
   </div>
@@ -33,7 +33,7 @@ const AllUsers = ({ users }) => (
     <Table striped celled>
       <Table.Body>
         <Table.Row>
-          <Table.Cell><b>Username</b></Table.Cell>
+          <Table.Cell><b>Name</b></Table.Cell>
           <Table.Cell><b>Blogs created</b></Table.Cell>
         </Table.Row>
         {users === undefined ? null : users.map((x) => <AllUsersRow key={x.id} user={x} />)}
