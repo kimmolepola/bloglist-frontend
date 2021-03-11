@@ -134,8 +134,8 @@ const App = ({
           <Notification />
           <Form onSubmit={handleLogin}>
             <Segment stacked>
-              <input placeholder="Username" data-cy="login-username" {...username} />
-              <input style={{ marginTop: 5 }} placeholder="Password" data-cy="login-password" {...password} />
+              <input autocapitalize="off" placeholder="Username" data-cy="login-username" {...username} />
+              <input autocapitalize="off" style={{ marginTop: 5 }} placeholder="Password" data-cy="login-password" {...password} />
               <Button style={{ marginTop: 10 }} primary data-cy="login-submit" type="submit">Login</Button>
             </Segment>
           </Form>
