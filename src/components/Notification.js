@@ -9,7 +9,7 @@ const Notification = ({ notification }) => {
   }
 
   return (
-    <div>
+    <div style={{ marginBottom: 15, marginTop: 15 }}>
       {notification.msgClass === 'success' ? <Message positive>{notification.message}</Message> : <Message negative>{notification.message}</Message>}
     </div>
   );

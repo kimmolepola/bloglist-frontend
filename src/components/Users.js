@@ -1,16 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Table, List } from 'semantic-ui-react';
+import { Table, List, Segment, Header } from 'semantic-ui-react';
 
 /* eslint-disable react/prop-types */
 const OneUser = ({ user }) => (
   <div>
-    <h2>{user.name}</h2>
-    <b>added blogs</b>
-    <List bulleted>
-      {user.blogs.map((x) => (<List.Item key={x.id}>{x.title}</List.Item>))}
-    </List>
+    <Header style={{ marginBottom: 40 }} as='h3' color='grey' textAlign='center'>
+      {user.name}
+    </Header>
+    <Segment textAlign="left">
+      <b>Added blogs</b>
+      <List bulleted>
+        {user.blogs.map((x) => (<List.Item key={x.id}>{x.title}</List.Item>))}
+      </List>
+    </Segment>
   </div>
 );
 
@@ -23,12 +27,14 @@ const AllUsersRow = ({ user }) => (
 
 const AllUsers = ({ users }) => (
   <div>
-    <h2>Users</h2>
+    <Header style={{ marginBottom: 40 }} as='h2' color='orange' textAlign='center'>
+      Users
+    </Header>
     <Table striped celled>
       <Table.Body>
         <Table.Row>
-          <Table.Cell />
-          <Table.Cell><b>blogs created</b></Table.Cell>
+          <Table.Cell><b>Username</b></Table.Cell>
+          <Table.Cell><b>Blogs created</b></Table.Cell>
         </Table.Row>
         {users === undefined ? null : users.map((x) => <AllUsersRow key={x.id} user={x} />)}
       </Table.Body>
@@ -48,56 +54,3 @@ const Users = ({ users, id }) => {
 };
 
 export default connect((state) => ({ users: state.users }))(Users);
-
-// div table
-/*
-const cellStyle = {
-  display: 'table-cell',
-  paddingRight: '10px',
-};
-
-const AllUsersRow = ({ user }) => (
-  <div style={{ display: 'table-row' }}>
-    <Link style={cellStyle} to={`/users/${user.id}`}>{user.name}</Link>
-    <div style={cellStyle}>{user.blogs.length}</div>
-  </div>
-);
-
-const AllUsers = ({ users }) => (
-  <div>
-    <h1>Users</h1>
-    <div style={{ display: 'table' }}>
-      <div style={{ display: 'table-row' }}>
-        <div style={cellStyle} />
-        <div style={cellStyle}><b>blogs created</b></div>
-      </div>
-      {users === undefined ? null : users.map((x) => <AllUsersRow key={x.id} user={x} />)}
-    </div>
-  </div>
-);
-*/
-
-// table
-/*
-const Row = ({ user }) => (
-  <tr>
-    <td><Link to={`/users/${user.id}`}>{user.name}</Link></td>
-    <td>{user.blogs.length}</td>
-  </tr>
-);
-
-const AllUsers = ({ users }) => (
-  <div>
-    <h1>Users</h1>
-    <table>
-      <tbody>
-        <tr>
-          <td />
-          <th>blogs created</th>
-        </tr>
-        {users === undefined ? null : users.map((x) => <Row key={x.id} user={x} />)}
-      </tbody>
-    </table>
-  </div>
-);
-*/

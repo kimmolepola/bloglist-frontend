@@ -9,17 +9,15 @@ const Togglable = React.forwardRef(({ children, buttonLabel, data_cy }, ref) => 
   const showWhenVisible = { display: visible ? '' : 'none' };
 
   const toggleVisibility = () => setVisible(!visible);
+  const resetVisibility = () => setVisible(false);
 
-  useImperativeHandle(ref, () => ({ toggleVisibility }));
+  useImperativeHandle(ref, () => ({ toggleVisibility, resetVisibility }));
 
   return (
     <div>
-      <div style={hideWhenVisible}>
-        <Button data-cy={data_cy} type="button" onClick={toggleVisibility}>{buttonLabel}</Button>
-      </div>
+      <Button style={hideWhenVisible} primary data-cy={data_cy} type="button" onClick={toggleVisibility}>{buttonLabel}</Button>
       <div style={showWhenVisible}>
         {children}
-        <Button type="button" onClick={toggleVisibility}>cancel</Button>
       </div>
     </div>
   );
@@ -29,3 +27,5 @@ const Togglable = React.forwardRef(({ children, buttonLabel, data_cy }, ref) => 
 Togglable.displayName = 'Togglable';
 
 export default Togglable;
+
+//<Button style={{ margin: 5 }} type="button" onClick={toggleVisibility}>cancel</Button>

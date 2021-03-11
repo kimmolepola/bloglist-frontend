@@ -11,13 +11,13 @@ import { addBlogForUser } from '../reducers/usersReducer';
 
 /* eslint-disable react/prop-types */
 const NewBlogForm = ({
-  notif, users, addBlgForUsr, addBlg,
+  notif, users, addBlgForUsr, addBlg, noteFormRef
 }) => {
   const { reset: urlreset, ...url } = useField('text', 'Url', 'create-new-blog-url-input');
   const { reset: authorreset, ...author } = useField('text', 'Author', 'create-new-blog-author-input');
   const { reset: titlereset, ...title } = useField('text', 'Title', 'create-new-blog-title-input');
 
-  const noteFormRef = React.createRef();
+  // const noteFormRef = React.createRef();
 
   const handleCreateNewBlog = async (event) => {
     event.preventDefault();
@@ -42,31 +42,29 @@ const NewBlogForm = ({
   };
   /* eslint-disable react/jsx-props-no-spreading */
   return (
-    <Togglable buttonLabel="new blog" data_cy="create-new-blog-button" ref={noteFormRef}>
-      <h2>create new</h2>
+    <Togglable buttonLabel="New blog" data_cy="create-new-blog-button" ref={noteFormRef}>
+      <h3>Create new</h3>
       <Form onSubmit={handleCreateNewBlog}>
         <Form.Field>
-            title:
           <Form.Group inline>
-            <input {...title} />
-            <Button type="button" onClick={() => titlereset()}>reset</Button>
+            <input placeholder="Title" {...title} />
+            <Button style={{ marginLeft: 5 }} type="button" onClick={() => titlereset()}>Reset</Button>
           </Form.Group>
         </Form.Field>
         <Form.Field>
-            author:
           <Form.Group inline>
-            <input {...author} />
-            <Button type="button" onClick={() => authorreset()}>reset</Button>
+            <input placeholder="Author" {...author} />
+            <Button style={{ marginLeft: 5 }} type="button" onClick={() => authorreset()}>Reset</Button>
           </Form.Group>
         </Form.Field>
         <Form.Field>
-            url:
           <Form.Group inline>
-            <input {...url} />
-            <Button type="button" onClick={() => urlreset()}>reset</Button>
+            <input placeholder="url" {...url} />
+            <Button style={{ marginLeft: 5 }} type="button" onClick={() => urlreset()}>Reset</Button>
           </Form.Group>
         </Form.Field>
-        <Button data-cy="create-new-blog-submit" color="grey" type="submit">create</Button>
+        <Button primary data-cy="create-new-blog-submit" type="submit">Create</Button>
+        <Button style={{ margin: 5 }} type="button" onClick={() => noteFormRef.current.toggleVisibility()}>Cancel</Button>
       </Form>
     </Togglable>
   );
@@ -85,3 +83,4 @@ const mapStateToProps = (state) => ({
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewBlogForm);
+
