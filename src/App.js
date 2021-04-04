@@ -4,7 +4,7 @@ import {
   BrowserRouter as Router, Route, Link, Switch, withRouter,
 } from 'react-router-dom';
 import {
-  Container, Menu, Button, Form, Grid, Header, Segment, Message, List, Icon, Image
+  Container, Menu, Button, Form, Grid, Header, Segment, Message, List, Icon, Image,
 } from 'semantic-ui-react';
 import blogService from './services/blogs';
 import loginService from './services/login';
@@ -26,7 +26,6 @@ import Lorem from './components/Lorem';
 const App = ({
   blogs, user, notif, setUsr, initBlogs, initUsers, initComments,
 }) => {
-
   const noteFormRef = React.createRef();
 
   const { reset: usernamereset, ...username } = useField('text', 'Username');
@@ -74,7 +73,7 @@ const App = ({
         {Object.values(blogs).length !== 0 ? blogs.sort((a, b) => b.likes - a.likes).map((blog) => (
           <List.Item key={blog.id}>
             <List.Content floated="right">
-              <br />{blog.likes} <Icon name='thumbs up outline' />
+              <br />{blog.likes} <Icon name="thumbs up outline" />
             </List.Content>
             <List.Content>
               <Link to={`/blogs/${blog.id}`}>{blog.title}</Link> <br />by {blog.author}
@@ -91,51 +90,57 @@ const App = ({
     <div>
       <Router>
         <Menu secondary pointing>
-          <Menu.Item link><Link onClick={() => noteFormRef.current ? noteFormRef.current.resetVisibility() : null} to="/"><Image src={logo} height="50px" /></Link></Menu.Item>
-          <Menu.Item ><Link to="/users">Users</Link></Menu.Item>
-          <Menu.Item ><Link to="/lorem">Lorem</Link></Menu.Item>
+          <Menu.Item link><Link onClick={() => (noteFormRef.current ? noteFormRef.current.resetVisibility() : null)} to="/"><Image src={logo} height="50px" /></Link></Menu.Item>
+          <Menu.Item><Link to="/users">Users</Link></Menu.Item>
+          <Menu.Item><Link to="/lorem">Lorem</Link></Menu.Item>
           <Menu.Item position="right">
-            <span style={{ paddingRight: 15 }}>Logged in as <b style={{ color: "orange" }}>{user.name}</b></span>
+            <span style={{ paddingRight: 15 }}>Logged in as <b style={{ color: 'green' }}>{user.name}</b></span>
             <Link to="/">
               <Button data-cy="logout-button" onClick={handleLogout} type="button">Logout</Button>
             </Link>
           </Menu.Item>
         </Menu>
-        <Grid textAlign='center' style={{ height: '80vh' }} verticalAlign='middle'>
+        <Grid textAlign="center" style={{ height: '80vh' }} verticalAlign="middle">
           <Grid.Column style={{ maxWidth: 450 }}>
             <Notification />
             <Switch>
-              <Route exact path="/" render={() => <div>
-                <Header style={{ marginBottom: 40 }} as='h2' color='orange' textAlign='center'>
+              <Route
+                exact
+                path="/"
+                render={() => (
+                  <div>
+                    <Header style={{ marginBottom: 40 }} as="h2" color="green" textAlign="center">
                   Blog List
-                </Header>
-                <NewBlogForm noteFormRef={noteFormRef} />
-                <Blogs />
-              </div>} />
+                    </Header>
+                    <NewBlogForm noteFormRef={noteFormRef} />
+                    <Blogs />
+                  </div>
+                )}
+              />
               <Route exact path="/users/:id?" render={({ match }) => <Users id={match.params.id} />} />
               <Route exact path="/lorem" render={() => <Lorem />} />
               <Route exact path="/blogs/:id" render={({ match }) => <SingleBlogViewYesHistory id={match.params.id} />} />
               <Route path="/" render={() => (<div>404 Page not found</div>)} />
             </Switch>
           </Grid.Column>
-        </Grid >
+        </Grid>
       </Router>
-    </div >
+    </div>
   );
 
   /* eslint-disable react/jsx-props-no-spreading */
   const LoginForm = () => (
     <div>
-      <Grid textAlign='center' style={{ height: '80vh' }} verticalAlign='middle'>
+      <Grid textAlign="center" style={{ height: '80vh' }} verticalAlign="middle">
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as='h2' color='orange' textAlign='center'>
+          <Header as="h2" color="green" textAlign="center">
             Log-in to your account
           </Header>
           <Notification />
           <Form onSubmit={handleLogin}>
             <Segment stacked>
-              <input autocapitalize="off" placeholder="Username" data-cy="login-username" {...username} />
-              <input autocapitalize="off" style={{ marginTop: 5 }} placeholder="Password" data-cy="login-password" {...password} />
+              <input autoCapitalize="off" placeholder="Username" data-cy="login-username" {...username} />
+              <input autoCapitalize="off" style={{ marginTop: 5 }} placeholder="Password" data-cy="login-password" {...password} />
               <Button style={{ marginTop: 10 }} primary data-cy="login-submit" type="submit">Login</Button>
             </Segment>
           </Form>
@@ -143,7 +148,7 @@ const App = ({
             <div>Please use username "qwer" and password "qwer"</div>
           </Message>
         </Grid.Column>
-      </Grid >
+      </Grid>
     </div>
   );
   /* eslint-enable react/jsx-props-no-spreading */

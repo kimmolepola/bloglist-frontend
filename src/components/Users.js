@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Table, List, Segment, Header } from 'semantic-ui-react';
+import {
+  Table, List, Segment, Header,
+} from 'semantic-ui-react';
 
 /* eslint-disable react/prop-types */
 const OneUser = ({ user }) => (
   <div>
-    <Header style={{ marginBottom: 40 }} as='h3' color='grey' textAlign='center'>
+    <Header style={{ marginBottom: 40 }} as="h3" color="grey" textAlign="center">
       {user.name}
     </Header>
     <Segment textAlign="left">
@@ -27,7 +29,7 @@ const AllUsersRow = ({ user }) => (
 
 const AllUsers = ({ users }) => (
   <div>
-    <Header style={{ marginBottom: 40 }} as='h2' color='orange' textAlign='center'>
+    <Header style={{ marginBottom: 40 }} as="h2" color="green" textAlign="center">
       Users
     </Header>
     <Table striped celled>
